@@ -4,7 +4,7 @@
 
 当前解决 **0 / 557** 个问题 其中 **94** 个问题被锁
 
-(Notes: :blue_book: 意味着您需要购买 leetcode书籍
+(说明: :blue_book: 意味着您需要购买 leetcode书籍）
 
 | # | Title | Source Code | Explanation | Difficulty |
 |:---:|:---:|:---:|:---:|:---:|
