@@ -1,19 +1,31 @@
+# -*- coding: UTF-8 -*-
 import os
 
-filename = '../README.md'
-out = './README.md'
+filename = './README.md'
+filepath = '../problems/'
 if not os.path.isfile(filename):
     exit(-1)
-with open(filename, 'rw') as f:
-    line = f.readline()
-    idnum = 1
-    with open(out, 'wa') as out:
-        while(line):
-            idnum = idnum + 1
-            if idnum > 11:
-                lineArr = line.split('|')
-                lineArr[3] = ''
-                lineArr[4] = ''
-                out.write(" | ".join(lineArr))
-                out.flush()
-            line = f.readline()
+git_url = ' [javascript](https://github.com/caixiaojia/leetcode-javascript/blob/master/problems/%s) '
+
+f = open(filename, 'r')
+content = f.readlines()
+for index in range(len(content) - 1):
+    if index >= 10:
+        contentArr = content[index].split('|')
+        # index 3: javascript url
+        name = contentArr[2].split('/')[4] + '.js'
+        # newFile = open(filepath + name, 'w')
+        # newFile.close()
+        problem_url = git_url % name
+        contentArr[3] = problem_url
+        # contentArr.pop(4)
+        contentArr[4] = " <font color='#A52A2A'>unsolved</font> "
+        line = "|".join(contentArr)
+        content[index] = line
+f.close()
+
+print content
+w = open(filename, 'w')
+w.writelines(content)
+w.flush()
+w.close()
